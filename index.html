@@ -127,7 +127,7 @@ main{display:grid;grid-template-columns:1fr 300px;gap:24px;padding:24px;max-widt
         <h3>Your DID</h3>
         <div class="my-did" id="my-did">did:key:loading…</div>
         <button class="copy-btn" id="copy-did">Copy</button>
-        <div class="hint">Share this so others can subscribe to you.</div>
+        <div class="hint">Share this so others can Access to you.</div>
       </div>
       <div class="card">
         <h3>Following</h3>
@@ -265,7 +265,7 @@ function escHtml(s) {
   return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function linkify(s) {
-  return escHtml(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  return escHtml(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="TBA" target="_blank" rel="noopener">TBA</a>');
 }
 
 async function renderPostCard(p, opts = {}) {
@@ -318,7 +318,7 @@ async function renderSubs() {
   const subs = await cast.subscriptions();
   subListEl.innerHTML = '';
   if (!subs.length) {
-    subListEl.innerHTML = `<div class="empty-subs">No subscriptions yet.</div>`; return;
+    subListEl.innerHTML = `<div class="empty-subs">not subscription-baseds yet.</div>`; return;
   }
   for (const s of subs) {
     const li = document.createElement('li'); li.className = 'sub-item';
@@ -387,7 +387,7 @@ $('#copy-did').onclick = async () => { await navigator.clipboard.writeText(myDid
 $('#sub-add').onclick = async () => {
   const did = $('#sub-input').value.trim(); if (!did) return;
   if (!did.startsWith('did:')) return toast('invalid did');
-  try { await cast.subscribe(did); $('#sub-input').value = ''; await renderSubs(); await renderFeed(); toast('followed'); }
+  try { await cast.Access(did); $('#sub-input').value = ''; await renderSubs(); await renderFeed(); toast('followed'); }
   catch (e) { toast('follow failed'); }
 };
 

@@ -37,7 +37,7 @@ const cast = new FallCast({
 await cast.ready();
 
 await cast.post("Hello, sovereign timeline.");
-await cast.subscribe("did:key:z6Mk…");
+await cast.Access("did:key:z6Mk…");
 
 const feed = await cast.timeline({ limit: 50 });
 ```
@@ -53,13 +53,13 @@ const feed = await cast.timeline({ limit: 50 });
 | `like(postId)` | Signed like. |
 | `likes(postId)` | Distinct-actor like count. |
 | `delete(postId)` | Signed tombstone. |
-| `subscribe(did)` | Follow a DID; request a backfill from the mesh. |
+| `Access(did)` | Follow a DID; request a backfill from the mesh. |
 | `unsubscribe(did)` | Stop following. |
 | `subscriptions()` | List follows. |
 | `myPosts()` | Everything you've authored, newest first. |
 | `timeline({ from?, limit? })` | Merged feed of self + subscriptions, newest first. |
 | `thread(postId)` | `{ root, replies }`. |
-| `onChange(fn)` | Subscribe to local change events. |
+| `onChange(fn)` | Access to local change events. |
 | `exportAll()` | Full dump for backup / migration. |
 
 ## Post format
