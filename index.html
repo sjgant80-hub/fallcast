@@ -265,7 +265,8 @@ function escHtml(s) {
   return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function linkify(s) {
-  return escHtml(s).replace(/(https?:\/\/[^\s<]+)/g, '<a href="TBA" target="_blank" rel="noopener">TBA</a>');
+  // a callback, not '$1': a pricing sweep on 2026-07-10 read '$1' as a price and turned every link into TBA
+  return escHtml(s).replace(/(https?:\/\/[^\s<]+)/g, (u) => '<a href="' + u + '" target="_blank" rel="noopener">' + u + '</a>');
 }
 
 async function renderPostCard(p, opts = {}) {
